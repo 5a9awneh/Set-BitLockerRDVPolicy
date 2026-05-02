@@ -1,7 +1,7 @@
 # Set-BitLockerRDVPolicy
 
 <!-- BADGES:START -->
-![License](https://img.shields.io/github/license/5a9awneh/Set-BitLockerRDVPolicy?style=for-the-badge) ![PowerShell](https://img.shields.io/badge/PowerShell-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=white) ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white) ![Last Commit](https://img.shields.io/github/last-commit/5a9awneh/Set-BitLockerRDVPolicy?style=for-the-badge)
+[![License](https://img.shields.io/github/license/5a9awneh/Set-BitLockerRDVPolicy)](LICENSE) [![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?logo=powershell&logoColor=white)](https://learn.microsoft.com/en-us/powershell/) [![Windows](https://img.shields.io/badge/Windows-0078D6?logo=windows&logoColor=white)](https://www.microsoft.com/windows) [![Last Commit](https://img.shields.io/github/last-commit/5a9awneh/Set-BitLockerRDVPolicy)](https://github.com/5a9awneh/Set-BitLockerRDVPolicy/commits/main) [<img src="https://madebyhuman.iamjarl.com/badges/loop-white.svg" alt="Human in the Loop" height="20">](https://madebyhuman.iamjarl.com)
 <!-- BADGES:END -->
 
 Resets the `RDVDenyWriteAccess` registry key and installs a self-healing scheduled task to keep it suppressed on Intune-managed Windows devices.
