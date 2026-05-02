@@ -1,0 +1,18 @@
+# Logs
+*.log
+*.log.old
+
+# Script output / temp
+*.tmp
+*.bak
+*.orig
+
+# OS artifacts
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Editor artifacts
+.vscode/
+.idea/
+*.suo
