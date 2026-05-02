@@ -1,5 +1,9 @@
 # Set-BitLockerRDVPolicy
 
+<!-- BADGES:START -->
+![License](https://img.shields.io/github/license/5a9awneh/Set-BitLockerRDVPolicy?style=for-the-badge) ![PowerShell](https://img.shields.io/badge/PowerShell-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=white) ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white) ![Last Commit](https://img.shields.io/github/last-commit/5a9awneh/Set-BitLockerRDVPolicy?style=for-the-badge)
+<!-- BADGES:END -->
+
 Resets the `RDVDenyWriteAccess` registry key and installs a self-healing scheduled task to keep it suppressed on Intune-managed Windows devices.
 
 Windows Security Baseline 25H2 ships with `RDVDenyWriteAccess = 1` as a new default, which blocks write access to any unencrypted removable drive. This breaks bootable and multi-partitioned USB drives (Easy2Boot, WinPE, Autopilot offline provisioning) because BitLocker encryption on a removable volume breaks the boot chain — UEFI firmware won't recognize an encrypted drive during device provisioning.
