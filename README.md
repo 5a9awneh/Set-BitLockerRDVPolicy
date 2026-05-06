@@ -10,6 +10,44 @@ Windows Security Baseline 25H2 ships with `RDVDenyWriteAccess = 1` as a new defa
 
 ---
 
+**The problem — Windows prompts to encrypt every unencrypted USB drive before allowing writes:**
+
+<img src="images/screenshots/error-bitlocker-usb-prompt.jpg" alt="Windows BitLocker prompt blocking write access to a removable drive"/>
+
+**After running the script, the prompt no longer appears and drives are writable immediately:**
+
+```
+Script installed to 'C:\ProgramData\Fix-BitLockerRDV\Fix-BitLockerRDV.ps1' - the original source file can now be deleted.
+[14:22:07] RDVDenyWriteAccess set to 0 (was 1).
+Scheduled task 'Fix-BitLockerRDVPolicy' registered (30-min poll + device-arrival trigger, runs as SYSTEM).
+
+Done. Reconnect your external drive now if it's already plugged in.
+```
+*(representative)*
+
+```mermaid
+flowchart TD
+    A([Run as Administrator]) --> B{Parameter?}
+    B -- "-Uninstall" --> U[Remove task & event source]
+    B -- "-SkipTaskReg" --> F[Apply registry fix]
+    B -- "default install" --> INST["Self-copy to ProgramData\nRegister scheduled task\n(30-min poll + device arrival)"]
+    INST --> F
+    F --> R{RDVDenyWriteAccess?}
+    R -- "= 1  (policy active)" --> SET[Set key → 0\nLog EventID 1000]
+    R -- "= 0  (already fixed)" --> OK[No change · skip]
+    R -- "key not found" --> W[Log EventID 1002 · warn]
+    R -- "access denied" --> E[Log EventID 1001 · abort]
+
+    classDef success fill:#2d6a2d,color:#fff,stroke:#1a3d1a
+    classDef failure fill:#8b1a1a,color:#fff,stroke:#5a0d0d
+    classDef warning fill:#7a5500,color:#fff,stroke:#4d3600
+    class SET,OK success
+    class E failure
+    class W,U warning
+```
+
+---
+
 ## 📋 Requirements
 
 - Windows 10 / 11
